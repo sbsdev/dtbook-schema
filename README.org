@@ -1,14 +1,14 @@
-#+TITLE: dtbook-schema
+* dtbook-schema
 
 This project extends the [[http://www.daisy.org/structure-guidelines][DTBook]] schema with elements and attributes
 needed for (Swiss) German Braille production.
 
-* Authors
+** Authors
 
 - Bert Frees
 - Christian Egli
 
-* License
+** License
 
 Copyright 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled
 
