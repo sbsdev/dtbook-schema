@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.sbs</groupId>
+    <artifactId>dtbook-schema</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <outputDirectory>target/schema</outputDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/schema</directory>
+                <includes>
+                    <include>*.rng</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>us.bryon</groupId>
+                <artifactId>relaxng-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-relaxng</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>trang</goal>
+                        </goals>
+                        <configuration>
+                            <translations>
+                                <translation>
+                                    <in>src/main/schema/dtbook-2005-3-sbs-braille.rnc</in>
+                                    <out>${project.build.outputDirectory}/dtbook-2005-3-sbs-braille.rng</out>
+                                </translation>
+                            </translations>
+                            <src>empty</src>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-schematron</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <java classname="net.sf.saxon.Transform">
+                                    <arg value="${project.build.outputDirectory}/dtbook-2005-3-sbs.rng"/>
+                                    <arg value="tools/RNG2Schtrn.xsl"/>
+                                    <arg value="-o:${project.build.outputDirectory}/dtbook-2005-3-sbs.sch"/>
+                                </java>
+                                <java classname="net.sf.saxon.Transform">
+                                    <arg value="${project.build.outputDirectory}/dtbook-2005-3-sbs.sch"/>
+                                    <arg value="tools/iso_schematron_sbs.xsl"/>
+                                    <arg value="-o:${project.build.outputDirectory}/dtbook-2005-3-sbs.sch.xsl"/>
+                                </java>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+                 <dependencies>
+                     <dependency>
+                         <groupId>net.sf.saxon</groupId>
+                         <artifactId>Saxon-HE</artifactId>
+                         <version>9.4.0.7</version>
+                     </dependency>
+                 </dependencies>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/zip.xml</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
