@@ -15,7 +15,7 @@ brl.contractionhint =
   | brl.emph
 
 brl.num =
-  element num {
+  element brl:num {
     attribute role {
       "ordinal"
       | "cardinal"
@@ -28,38 +28,38 @@ brl.num =
     text }
 
 brl.homograph =
-  element homograph {
-    element separator { empty }+
+  element brl:homograph {
+    element brl:separator { empty }+
     & text }
 
 brl.v-form =
-  element v-form {
+  element brl:v-form {
     xsd:normalizedString { minLength = "1" }}
 
 brl.name =
-  element name {
+  element brl:name {
     xsd:normalizedString { minLength = "1" }}
 
 brl.place =
-  element place {
+  element brl:place {
     xsd:normalizedString { minLength = "1" }}
 
 brl.date =
-  element date {
+  element brl:date {
     attribute value {
       xsd:gMonthDay
       | xsd:date },
     text }
 
 brl.time =
-  element time {
+  element brl:time {
     attribute value {
       xsd:time
       | xsd:string { pattern = "\d\d:\d\d" }},
     text }
 
 brl.emph =
-  element emph {
+  element brl:emph {
     brl.emphasisClassAttribute?,
     brl.emphasisRenderAttribute?,
     attribute id { id.type }?,
@@ -84,7 +84,7 @@ brl.emphasisRenderAttribute =
 # ===============================
 
 brl.toc-line =
-  element toc-line {
+  element brl:toc-line {
     text
     & dtb.em*
     & dtb.strong*
@@ -93,7 +93,7 @@ brl.toc-line =
     & dtb.span* }
 
 brl.running-line =
-  element running-line {
+  element brl:running-line {
     brl.gradeAttribute?,
     (text
      & dtb.em*
@@ -107,7 +107,7 @@ brl.running-line =
 # ================
 
 brl.volume =
-  element volume {
+  element brl:volume {
     brl.gradeAttribute }
 
 # ==========
@@ -136,15 +136,15 @@ brl.accentsAttribute &=
 # ========================
 
 brl.select =
-  element select {
-    element when-braille {
+  element brl:select {
+    element brl:when-braille {
       text
       & brl.literal* },
-    element otherwise {
+    element brl:otherwise {
       text }}
 
 brl.literal =
-  element literal {
+  element brl:literal {
     brl.gradeAttribute?,
     text }
 
