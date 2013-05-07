@@ -576,7 +576,7 @@ which require a preprocess.
 		select="iso:ns" />
 
 	    <!-- Handle the namespaces before the version attribute: reported to help SAXON -->
-	    <xsl:attribute name="version">1.0</xsl:attribute>
+	    <xsl:attribute name="version">2.0</xsl:attribute>
 	    
 		<xsl:apply-templates select="." mode="stylesheetbody"/>
 		<!-- was xsl:call-template name="stylesheetbody"/ -->
