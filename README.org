@@ -3,6 +3,12 @@
 This project extends the [[http://www.daisy.org/structure-guidelines][DTBook]] schema with elements and attributes
 needed for (Swiss) German Braille production.
 
+** How to build
+
+#+BEGIN_EXAMPLE
+  mvn package
+#+END_EXAMPLE
+
 ** Authors
 
 - Bert Frees
@@ -15,3 +21,5 @@ Copyright 2013 Swiss Library for the Blind, Visually Impaired and Print Disabled
 Licensed under GNU Lesser General Public License as published by the
 Free Software Foundation, either [[http://www.gnu.org/licenses/gpl-3.0.html][version 3]] of the License, or (at your
 option) any later version.
+
+#+STARTUP: showall
