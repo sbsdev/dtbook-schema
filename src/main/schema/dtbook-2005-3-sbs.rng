@@ -243,10 +243,6 @@
         </choice>
     </define>
     
-    <!-- TODO Allow toc-line and running-line in headings -->
-    
-    <!-- TODO Allow volume separators in bodymatter, rearmatter, level -->
-    
     <!-- Allow @brl:class attribute on h1, h2, h3, h4, h5, h6, p, div  -->
     <define name="dtb.attlist.h1" combine="interleave">
         <optional>
