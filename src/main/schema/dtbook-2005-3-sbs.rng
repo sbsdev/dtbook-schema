@@ -75,7 +75,110 @@
                 <attribute name="scheme"/>
             </optional>
         </define>
-        
+
+	<!-- Allow toc-line and running-line in headings -->
+	<define name="dtb.h1" combine="interleave">
+	  <element name="h1">
+	    <ref name="dtb.attlist.h1"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.h2" combine="interleave">
+	  <element name="h2">
+	    <ref name="dtb.attlist.h2"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.h3" combine="interleave">
+	  <element name="h3">
+	    <ref name="dtb.attlist.h3"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.h4" combine="interleave">
+	  <element name="h4">
+	    <ref name="dtb.attlist.h4"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.h5" combine="interleave">
+	  <element name="h5">
+	    <ref name="dtb.attlist.h5"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.h6" combine="interleave">
+	  <element name="h6">
+	    <ref name="dtb.attlist.h6"/>
+	    <interleave>
+	      <zeroOrMore>
+		<ref name="dtb.inline"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.running-line"/>
+	      </zeroOrMore>
+	      <zeroOrMore>
+		<ref name="brl.toc-line"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
 	<!-- Allow volume separators in level and div -->
 	<define name="dtb.docblockorinline">
 	  <choice>
