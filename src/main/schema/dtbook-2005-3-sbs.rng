@@ -76,6 +76,54 @@
             </optional>
         </define>
         
+	<!-- Allow volume separators in level and div -->
+	<define name="dtb.docblockorinline">
+	  <choice>
+	    <ref name="dtb.doctitle"/>
+	    <ref name="dtb.docauthor"/>
+	    <ref name="dtb.covertitle"/>
+	    <ref name="dtb.bridgehead"/>
+	    <ref name="dtb.block"/>
+	    <ref name="dtb.inlineinblock"/>
+	    <ref name="brl.volume"/>
+	  </choice>
+	</define>
+
+	<!-- Allow volume separators in bodymatter, rearmatter -->
+	<define name="dtb.bodymatter">
+	  <element name="bodymatter">
+	    <ref name="dtb.attlist.bodymatter"/>
+	    <interleave>
+	      <oneOrMore>
+		<choice>
+		  <ref name="dtb.level"/>
+		  <ref name="dtb.level1"/>
+		</choice>
+	      </oneOrMore>
+              <zeroOrMore>
+		<ref name="brl.volume"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+
+	<define name="dtb.rearmatter">
+	  <element name="rearmatter">
+	    <ref name="dtb.attlist.rearmatter"/>
+	    <interleave>
+	      <oneOrMore>
+		<choice>
+		  <ref name="dtb.level"/>
+		  <ref name="dtb.level1"/>
+		</choice>
+	      </oneOrMore>
+              <zeroOrMore>
+		<ref name="brl.volume"/>
+	      </zeroOrMore>
+	    </interleave>
+	  </element>
+	</define>
+	
     </include>
     
     <!-- ======= -->
