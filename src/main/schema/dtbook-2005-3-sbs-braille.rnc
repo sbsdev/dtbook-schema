@@ -71,7 +71,7 @@ brl.emph =
 
 ## The class attribute on emphasis is used to categorize the emphasis tags.
 ## This will help in deciding what brl:render attribute to set for this emphasis
-brl.emphasisClassAttribute = attribute brl:class { string }
+brl.emphasisClassAttribute = attribute class { string }
 brl.emphasisRenderAttribute =
   attribute brl:render {
     "emph"
