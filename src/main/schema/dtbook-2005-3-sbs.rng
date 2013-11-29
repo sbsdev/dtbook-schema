@@ -17,6 +17,17 @@
 	
 	<include href="dtbook-2005-3.rng" ns="http://www.daisy.org/z3986/2005/dtbook/">
 		
+		<!-- Overwrite required value of version attribute -->
+		<define name="dtb.attlist.dtbook" combine="interleave">
+			<optional>
+				<attribute name="version" a:defaultValue="2005-3-sbs">
+					<value type="string" datatypeLibrary="">2005-3-sbs</value>
+				</attribute>
+			</optional>
+			<ref name="dtb.i18n"/>
+			<ref name="dtb.externalNamespaces"/>
+		</define>
+		
 		<!-- Limit possible values of @xml:lang -->
 		<define name="dtb.LanguageCode">
 			<choice>

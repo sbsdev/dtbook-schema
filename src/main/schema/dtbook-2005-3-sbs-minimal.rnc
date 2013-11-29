@@ -1,0 +1,459 @@
+default namespace = "http://www.daisy.org/z3986/2005/dtbook/"
+namespace brl = "http://www.daisy.org/z3986/2009/braille/"
+
+start = dtbook
+
+dtbook = element dtbook {
+   attribute version { "2005-3-sbs-minimal" },
+   attribute xml:lang { "de" | "de-1901" | "de-CH" | "de-CH-1901" },
+   head,
+   book
+}
+
+head = element head { meta+ }
+
+meta = element meta {
+   attribute content { text },
+   attribute name { "dtb:uid" | "dc:Title" | "dc:Creator" | "dc:Subject" | "dc:Description" | "dc:Publisher" | "dc:Date" | "dc:Type" | "dc:Format" | "dc:Identifier" | "dc:Source" | "dc:Language" | "dc:Rights" | "dtb:sourceEdition" | "dtb:sourcePublisher" | "dtb:sourceRights" | "dtb:sourceDate" | "prod:series" | "prod:seriesNumber" | "prod:source" }
+}
+
+book =  element book {
+   frontmatter,
+   bodymatter,
+   rearmatter?
+}
+
+frontmatter = element frontmatter {
+   element doctitle { text & abbr* & em* & strong* & contractionhints* & select* & span* },
+   element docauthor { text & abbr* & em* & strong* & contractionhints* & select* & span* },
+   frontmatterLevel1*
+}
+
+bodymatter = element bodymatter { level1+ & volume*}
+rearmatter = element rearmatter { level1+ & volume*}
+
+langAttribute =
+   attribute xml:lang { "gsw" | "en" | "fr" | "it" | "es" | "und" }
+
+gradeAttribute = 
+   attribute brl:grade { xsd:nonNegativeInteger { maxInclusive = "2" }}
+
+accentsAttribute = 
+   attribute brl:accents { "detailed" | "reduced" }
+
+## brl:class lets you fine tune the Braille formatting (think of it as
+## a form of css for Braille)
+brailleClassAttribute = attribute brl:class { string }
+
+levelcontent = 
+   pagenum
+ | p 
+ | \list
+ | blockquote
+ | epigraph
+ | poem
+ | note
+ | author
+ | byline 
+ | volume
+ | \div
+ | linegroup
+
+hcontent = 
+   text
+ & contractionhints*
+ & span*
+ & abbr*
+ & em* 
+ & strong*
+ & noteref*
+ & toc-line?
+ & running-line*
+ & select*
+ & a*
+
+level1 = element level1 {
+   ((h1, (levelcontent | level2)+)
+    | ((levelcontent | level2)+,
+       (h1, (levelcontent | level2)+)?))
+}
+
+frontmatterLevel1 = element level1 {
+   attribute class { "titlepage" | "toc" }?,
+   ((levelcontent | level2)+
+    & h1?) 
+}
+
+h1 = element h1 { 
+   brailleClassAttribute?,
+   hcontent 
+}
+
+level2 = element level2 {
+   ((h2, (levelcontent | level3)+)
+    | ((levelcontent | level3)+,
+       (h2, (levelcontent | level3)+)?))
+}
+
+h2 = element h2 {
+   brailleClassAttribute?,
+   hcontent
+}
+
+level3 = element level3 {
+   ((h3, (levelcontent | level4)+)
+    | ((levelcontent | level4)+,
+       (h3, (levelcontent | level4)+)?))
+}
+
+h3 = element h3 {
+   brailleClassAttribute?,
+   hcontent
+}
+
+level4 = element level4 {
+   ((h4, (levelcontent | level5)+)
+    | ((levelcontent | level5)+,
+       (h4, (levelcontent | level5)+)?))
+}
+
+h4 = element h4 {
+   brailleClassAttribute?,
+   hcontent
+}
+
+level5 = element level5 {
+   ((h5, (levelcontent | level6)+)
+    | ((levelcontent | level6)+,
+       (h5, (levelcontent | level6)+)?))
+}
+
+h5 = element h5 {
+   brailleClassAttribute?,
+   hcontent
+}
+
+level6 = element level6 {
+   ((h6, levelcontent+)
+    | (levelcontent+, (h6, levelcontent+)?))
+}
+
+h6 = element h6 {
+   brailleClassAttribute?,
+   hcontent
+}
+
+p = element p {
+   brailleClassAttribute?,
+   # this is a hack that the Norwegians came up with to work around
+   # the lack of a separator element (see
+   # http://www.daisy.org/z3986/2011/auth/cm/#z3986.separator) in
+   # dtbook xml. They "annotate" the following paragraph with a class
+   # attribute that declares a separator or an empty line before it.
+   attribute class { list { ("precedingseparator" | "precedingemptyline" | "noindent" | "sourcePublisher")+ } }?,
+   (text
+    & pagenum*
+    & em*
+    & strong*
+    & abbr*
+    & contractionhints*
+    & span*
+    & noteref*
+    & select*
+    & a*)
+}
+
+## A subset of the dtb:a which is not used for inter-dtbook linking
+## but solely for marking up (external) URLs such as urls of
+## publishers of book websites, etc
+a = element a {
+   attribute href { string },
+   attribute external { "true" },
+   text
+}
+
+## The class attribute on emphasis is used to categorize the emphasis
+## tags. This will help in deciding what brl:render attribute to set
+## for this emphasis
+emphasisClassAttribute = attribute class { string }
+
+emphasisRenderAttribute = attribute brl:render { "emph" | "quote" | "singlequote" | "ignore" }
+
+## The continuation attribute provides a mechanism to establish a connection
+## between emphasis that continues across multiple paragraphs e.g.
+## Referenced elements must be located after the referencing element. An <em>
+## can only reference another <em>, a <strong> can only reference another <strong>.
+continuationAttribute = attribute brl:continuation { xsd:IDREFS }
+
+idAttribute = attribute id { xsd:ID }
+
+em = element em {
+   emphasisClassAttribute?,
+   emphasisRenderAttribute?,
+   idAttribute?,
+   continuationAttribute?,
+   (text
+    & pagenum?
+    & contractionhints*
+    & abbr*
+    & noteref*
+    & span*
+    & a*
+    & select*)
+}
+
+strong = element strong {
+   emphasisClassAttribute?,
+   emphasisRenderAttribute?,
+   idAttribute?,
+   continuationAttribute?,
+   (text
+    & pagenum?
+    & contractionhints*
+    & abbr*
+    & noteref*
+    & span*
+    & a*
+    & select*)
+}
+
+abbr = element abbr {
+   text
+}
+
+span = element span {
+   langAttribute?,
+   (gradeAttribute | accentsAttribute),
+   (text
+    & pagenum*
+    & em*
+    & strong*
+    & abbr*
+    & contractionhints*
+    & noteref*
+    & span*)
+}
+
+blockquote = element blockquote { 
+   langAttribute?,
+   brailleClassAttribute?,
+   (p+ 
+    & pagenum*
+    & author*
+    & byline*)
+}
+
+epigraph = element epigraph { 
+   brailleClassAttribute?,
+   langAttribute?,
+   ((p+ | poem) 
+    & pagenum*
+    & author*
+    & byline*)
+}
+
+author = element author {
+   brailleClassAttribute?,
+   (text
+    & contractionhints*
+    & abbr*
+    & span*
+    & noteref*
+    & select*
+    & a*)
+}
+
+byline = element byline {
+   brailleClassAttribute?,
+   (text
+    & contractionhints*
+    & abbr*
+    & em*
+    & strong*
+    & span*
+    & noteref*
+    & select*
+    & a*)
+}
+
+\list = element list {
+   brailleClassAttribute?,
+   attribute type { "pl" | "ol" | "ul" },
+   attribute enum { "1" | "a" | "A" | "i" | "I" } ?,
+   (li+ & pagenum*)
+}
+
+li = element li { 
+   brailleClassAttribute?,
+   (text
+    & em*
+    & strong*
+    & contractionhints*    
+    & abbr*
+    & span*
+    & lic*
+    & pagenum*
+    & noteref*
+    & \list*
+    & select*
+    & a*)
+}
+
+lic = element lic { 
+   text
+ & em*
+ & strong*
+ & contractionhints*
+ & abbr*
+ & span*
+ & select*
+ & a*
+}
+
+pagenum = element pagenum {
+   idAttribute?,
+   attribute page { "normal" },
+   xsd:integer
+}
+
+poem = element poem {
+   brailleClassAttribute?,
+   langAttribute?,
+   (author*
+    & byline*
+    & ( linegroup+ | line+ )
+    & pagenum*)
+}
+
+linegroup = element linegroup { 
+   brailleClassAttribute?,
+   ((line+ | p+)
+    & pagenum*)
+}
+
+line = element line { 
+   brailleClassAttribute?,
+   (text
+    & pagenum*
+    & em*
+    & strong*
+    & abbr*
+    & contractionhints*
+    & span*
+    & noteref*
+    & select*
+    & a*)
+}
+
+noteref = element noteref { 
+   attribute idref { string },
+   text 
+}
+
+note = element note {
+   attribute id { xsd:ID },
+   p+
+}
+
+\div = element div {
+   brailleClassAttribute,
+   langAttribute?,
+   (p*
+    & \list*
+    & blockquote*
+    & author*
+    & note*
+    & poem*
+    & linegroup*
+    & byline*
+    & epigraph*
+    & pagenum*
+    & \div*)
+}
+
+contractionhints = 
+   num*
+ & homograph*
+ & v-form*
+ & name*
+ & place*
+ & date*
+ & time*
+ & emph*
+
+num = element brl:num {
+   attribute role { "ordinal" | "cardinal" | "roman" | "fraction" | "mixed" | "isbn" | "phone" | "measure"},
+   text
+}
+
+homograph = element brl:homograph {
+   element brl:separator { empty }+
+ & text
+}
+
+v-form = element brl:v-form {
+   xsd:normalizedString { minLength = "1" }
+}
+
+name = element brl:name {
+   xsd:normalizedString { minLength = "1" }
+}
+
+place = element brl:place {
+   xsd:normalizedString { minLength = "1" }
+}
+
+date = element brl:date {
+   attribute value { xsd:gMonthDay | xsd:date },
+   text
+}
+
+time = element brl:time {
+   attribute value { xsd:time | xsd:string { pattern = "\d\d:\d\d" }},
+   text
+}
+
+emph = element brl:emph {
+   emphasisClassAttribute?,
+   emphasisRenderAttribute?,
+   idAttribute?,
+   continuationAttribute?,
+    (text
+    & pagenum?
+    & contractionhints*
+    & abbr*)
+}
+
+volume = element brl:volume {
+   gradeAttribute
+}
+
+literal = element brl:literal {
+   gradeAttribute?,
+   text
+}
+
+toc-line = element brl:toc-line {
+   text
+ & em*
+ & strong*
+ & contractionhints*
+ & abbr*
+ & span*
+}
+
+running-line = element brl:running-line {
+   gradeAttribute?,
+   (text
+    & em*
+    & strong*
+    & contractionhints*
+    & abbr*
+    & span*)
+}
+
+# a simplified content selection feature backported from zednext
+select = element brl:select {
+   element brl:when-braille { text & literal* },
+   element brl:otherwise { text }
+}

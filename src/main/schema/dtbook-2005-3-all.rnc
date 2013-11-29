@@ -1,0 +1,3 @@
+orig = external "dtbook-2005-3.rnc"
+sbs = external "dtbook-2005-3-sbs-all.rnc"
+start = orig | sbs
