@@ -380,6 +380,7 @@ contractionhints =
  & date*
  & time*
  & emph*
+ & computer*
 
 num = element brl:num {
    attribute role { "ordinal" | "cardinal" | "roman" | "fraction" | "mixed" | "isbn" | "phone" | "measure"},
@@ -422,6 +423,10 @@ emph = element brl:emph {
     & pagenum?
     & contractionhints*
     & abbr*)
+}
+
+computer = element brl:computer {
+   text
 }
 
 volume = element brl:volume {

@@ -13,6 +13,7 @@ brl.contractionhint =
   | brl.date
   | brl.time
   | brl.emph
+  | brl.computer
 
 brl.num =
   element brl:num {
@@ -68,6 +69,10 @@ brl.emph =
      & dtb.pagenum?
      & brl.contractionhint*
      & dtb.abbr*) }
+
+brl.computer =
+  element brl:computer {
+    text }
 
 ## The class attribute on emphasis is used to categorize the emphasis tags.
 ## This will help in deciding what brl:render attribute to set for this emphasis
