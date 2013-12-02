@@ -1,3 +1,0 @@
-max = external "dtbook-2005-3-sbs.rnc"
-min = external "dtbook-2005-3-sbs-minimal.rnc"
-start = max | min

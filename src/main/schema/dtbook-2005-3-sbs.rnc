@@ -1,0 +1,3 @@
+full = external "dtbook-2005-3-sbs-full.rnc"
+minimal = external "dtbook-2005-3-sbs-minimal.rnc"
+start = full | minimal

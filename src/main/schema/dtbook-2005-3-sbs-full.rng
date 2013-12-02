@@ -20,8 +20,8 @@
 		<!-- Overwrite required value of version attribute -->
 		<define name="dtb.attlist.dtbook" combine="interleave">
 			<optional>
-				<attribute name="version" a:defaultValue="2005-3-sbs">
-					<value type="string" datatypeLibrary="">2005-3-sbs</value>
+				<attribute name="version" a:defaultValue="2005-3-sbs-full">
+					<value type="string" datatypeLibrary="">2005-3-sbs-full</value>
 				</attribute>
 			</optional>
 			<ref name="dtb.i18n"/>
