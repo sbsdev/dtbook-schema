@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.sbs</groupId>
     <artifactId>dtbook-schema</artifactId>
@@ -16,6 +16,14 @@
                 <includes>
                     <include>*.rng</include>
                 </includes>
+                <targetPath>rng</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/schema</directory>
+                <includes>
+                    <include>*.rnc</include>
+                </includes>
+                <targetPath>rnc</targetPath>
             </resource>
         </resources>
         <plugins>
@@ -43,9 +51,39 @@
                         </goals>
                         <configuration>
                             <translations>
+                                <!--
+                                    generates:
+                                    - dtbook-2005-3-sbs-braille.rng
+                                -->
                                 <translation>
-                                    <in>src/main/schema/dtbook-2005-3-sbs-braille.rnc</in>
-                                    <out>${project.build.outputDirectory}/dtbook-2005-3-sbs-braille.rng</out>
+                                    <in>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs-braille.rnc</in>
+                                    <out>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-braille.rng</out>
+                                </translation>
+                                <!--
+                                    generates:
+                                    - dtbook-2005-3.rnc
+                                    - dtbook-2005-3-sbs-full.rnc
+                                    - dtbook-2005-3-sbs-continuation.rnc
+                                    overwrites:
+                                    - dtbook-2005-3-sbs-braille.rnc
+                                -->
+                                <translation>
+                                    <in>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-full.rng</in>
+                                    <out>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs-full.rnc</out>
+                                </translation>
+                                <!--
+                                    generates:
+                                    - dtbook-2005-3-sbs.rng
+                                    - dtbook-2005-3-sbs-minimal.rng
+                                    overwrites:
+                                    - dtbook-2005-3.rng
+                                    - dtbook-2005-3-sbs-full.rng
+                                    - dtbook-2005-3-sbs-braille.rng
+                                    - dtbook-2005-3-sbs-continuation.rng
+                                -->
+                                <translation>
+                                    <in>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs.rnc</in>
+                                    <out>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs.rng</out>
                                 </translation>
                             </translations>
                             <src>empty</src>
@@ -65,14 +103,14 @@
                         <configuration>
                             <tasks>
                                 <java classname="net.sf.saxon.Transform">
-                                    <arg value="${project.build.outputDirectory}/dtbook-2005-3-sbs.rng"/>
+                                    <arg value="${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-full.rng"/>
                                     <arg value="tools/RNG2Schtrn.xsl"/>
-                                    <arg value="-o:${project.build.outputDirectory}/dtbook-2005-3-sbs.sch"/>
+                                    <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-full.sch"/>
                                 </java>
                                 <java classname="net.sf.saxon.Transform">
-                                    <arg value="${project.build.outputDirectory}/dtbook-2005-3-sbs.sch"/>
+                                    <arg value="${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-full.sch"/>
                                     <arg value="tools/iso_schematron_sbs.xsl"/>
-                                    <arg value="-o:${project.build.outputDirectory}/dtbook-2005-3-sbs.sch.xsl"/>
+                                    <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-full.sch.xsl"/>
                                 </java>
                             </tasks>
                         </configuration>
