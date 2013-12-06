@@ -165,6 +165,9 @@
             <plugin>
               <artifactId>maven-gpg-plugin</artifactId>
               <version>1.4</version>
+              <configuration>
+		<useAgent>true</useAgent>
+              </configuration>
               <executions>
 		<execution>
                   <id>sign-artifacts</id>
