@@ -8,6 +8,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <scm>
+      <developerConnection>scm:git:ssh://git@github.com:sbsdev/dtbook-schema.git</developerConnection>
+    </scm>
     <build>
         <outputDirectory>target/schema</outputDirectory>
         <resources>
@@ -29,6 +32,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
+		<version>2.6</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
@@ -141,6 +145,15 @@
                     </execution>
                 </executions>
             </plugin>
+	    <plugin>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>2.4.2</version>
+              <configuration>
+		<tagNameFormat>v@{project.version}</tagNameFormat>
+		<pushChanges>false</pushChanges>
+		<localCheckout>true</localCheckout>
+              </configuration>
+	    </plugin>
         </plugins>
     </build>
 </project>
