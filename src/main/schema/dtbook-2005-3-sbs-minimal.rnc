@@ -169,7 +169,7 @@ p = element p {
 a = element a {
    attribute href { string },
    attribute external { "true" },
-   text
+   (text & contractionhints*)
 }
 
 ## The class attribute on emphasis is used to categorize the emphasis
