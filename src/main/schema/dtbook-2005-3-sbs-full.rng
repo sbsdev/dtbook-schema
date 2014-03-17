@@ -453,12 +453,18 @@
 		<optional>
 			<ref name="brl.emphasisRenderAttribute"/>
 		</optional>
+		<optional>
+			<ref name="brl.continuationAttribute"/>
+		</optional>
 	</define>
 	
 	<!-- Allow @brl:render on dtb:strong -->
 	<define name="dtb.attlist.strong" combine="interleave">
 		<optional>
 			<ref name="brl.emphasisRenderAttribute"/>
+		</optional>
+		<optional>
+			<ref name="brl.continuationAttribute"/>
 		</optional>
 	</define>
 	
