@@ -3,6 +3,10 @@
 
 ((nil
   (compile-command . "mvn clean package"))
+ ("pom.xml"
+  . ((nil . ((indent-tabs-mode . t)
+             (tab-width . 8)
+             (nxml-child-indent . 4)))))
  ("src/main/schema/dtbook-2005-3-sbs-full.rng"
   . ((nil . ((indent-tabs-mode . t)
              (tab-width . 4)

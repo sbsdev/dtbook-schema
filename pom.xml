@@ -35,13 +35,6 @@
             <resource>
                 <directory>src/main/schema</directory>
                 <includes>
-                    <include>*.rng</include>
-                </includes>
-                <targetPath>rng</targetPath>
-            </resource>
-            <resource>
-                <directory>src/main/schema</directory>
-                <includes>
                     <include>*.rnc</include>
                 </includes>
                 <targetPath>rnc</targetPath>
@@ -71,36 +64,6 @@
                         </goals>
                         <configuration>
                             <translations>
-                                <!--
-                                    generates:
-                                    - dtbook-2005-3-sbs-braille.rng
-                                -->
-                                <translation>
-                                    <in>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs-braille.rnc</in>
-                                    <out>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-braille.rng</out>
-                                </translation>
-                                <!--
-                                    generates:
-                                    - dtbook-2005-3.rnc
-                                    - dtbook-2005-3-sbs-full.rnc
-                                    - dtbook-2005-3-sbs-continuation.rnc
-                                    overwrites:
-                                    - dtbook-2005-3-sbs-braille.rnc
-                                -->
-                                <translation>
-                                    <in>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-full.rng</in>
-                                    <out>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs-full.rnc</out>
-                                </translation>
-                                <!--
-                                    generates:
-                                    - dtbook-2005-3-sbs.rng
-                                    - dtbook-2005-3-sbs-minimal.rng
-                                    overwrites:
-                                    - dtbook-2005-3.rng
-                                    - dtbook-2005-3-sbs-full.rng
-                                    - dtbook-2005-3-sbs-braille.rng
-                                    - dtbook-2005-3-sbs-continuation.rng
-                                -->
                                 <translation>
                                     <in>${project.build.outputDirectory}/rnc/dtbook-2005-3-sbs.rnc</in>
                                     <out>${project.build.outputDirectory}/rng/dtbook-2005-3-sbs.rng</out>
