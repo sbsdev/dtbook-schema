@@ -1,4 +1,5 @@
 default namespace brl = "http://www.daisy.org/z3986/2009/braille/"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # =================
 # Contraction hints
