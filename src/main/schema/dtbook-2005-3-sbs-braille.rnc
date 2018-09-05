@@ -80,7 +80,8 @@ brl.computer =
 brl.emphasisClassAttribute = attribute class { string }
 brl.emphasisRenderAttribute =
   attribute brl:render {
-    "emph"
+      "emph"
+    | "emph2"
     | "quote"
     | "singlequote"
     | "ignore" }

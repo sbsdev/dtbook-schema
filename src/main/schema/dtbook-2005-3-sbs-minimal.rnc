@@ -177,7 +177,7 @@ a = element a {
 ## for this emphasis
 emphasisClassAttribute = attribute class { string }
 
-emphasisRenderAttribute = attribute brl:render { "emph" | "quote" | "singlequote" | "ignore" }
+emphasisRenderAttribute = attribute brl:render { "emph" | "emph2" | "quote" | "singlequote" | "ignore" }
 
 ## The continuation attribute provides a mechanism to establish a connection
 ## between emphasis that continues across multiple paragraphs e.g.
