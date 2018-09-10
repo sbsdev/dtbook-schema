@@ -55,7 +55,7 @@ brl.date =
 
 brl.time =
   element brl:time {
-    attribute brl:render { "compact" }?,
+    attribute brl:render { "compact" | "standard" }?,
     attribute value {
       xsd:time
       | xsd:string { pattern = "\d\d:\d\d" }},
