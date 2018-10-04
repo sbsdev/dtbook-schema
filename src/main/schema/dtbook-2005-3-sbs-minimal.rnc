@@ -405,12 +405,16 @@ place = element brl:place {
 }
 
 date = element brl:date {
-   attribute value { xsd:gMonthDay | xsd:date },
+   ## make the value attribute optional, it is no longer used and just
+   ## kept for backwards compatibility
+   attribute value { xsd:gMonthDay | xsd:date }?,
    text
 }
 
 time = element brl:time {
-   attribute value { xsd:time | xsd:string { pattern = "\d\d:\d\d" }},
+   ## make the value attribute optional, it is no longer used and just
+   ## kept for backwards compatibility
+   attribute value { xsd:time | xsd:string { pattern = "\d\d:\d\d" }}?,
    text
 }
 

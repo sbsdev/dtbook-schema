@@ -48,16 +48,20 @@ brl.place =
 
 brl.date =
   element brl:date {
+    ## make the value attribute optional, it is no longer used and
+    ## just kept for backwards compatibility
     attribute value {
       xsd:gMonthDay
-      | xsd:date },
+      | xsd:date }?,
     text }
 
 brl.time =
   element brl:time {
+    ## make the value attribute optional, it is no longer used and
+    ## just kept for backwards compatibility
     attribute value {
       xsd:time
-      | xsd:string { pattern = "\d\d:\d\d" }},
+      | xsd:string { pattern = "\d\d:\d\d" }}?,
     text }
 
 brl.emph =
