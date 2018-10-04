@@ -71,7 +71,8 @@ brl.emph =
      & dtb.pagenum?
      & brl.contractionhint*
      & dtb.abbr*
-     & dtb.span*) }
+     & dtb.span*
+     & brl.select* ) }
 
 brl.computer =
   element brl:computer {
