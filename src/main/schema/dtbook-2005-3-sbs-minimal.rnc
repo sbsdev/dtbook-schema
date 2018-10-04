@@ -423,7 +423,8 @@ emph = element brl:emph {
     (text
     & pagenum?
     & contractionhints*
-    & abbr*)
+    & abbr*
+    & span*)
 }
 
 computer = element brl:computer {

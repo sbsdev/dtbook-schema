@@ -70,7 +70,8 @@ brl.emph =
     (text
      & dtb.pagenum?
      & brl.contractionhint*
-     & dtb.abbr*) }
+     & dtb.abbr*
+     & dtb.span*) }
 
 brl.computer =
   element brl:computer {
