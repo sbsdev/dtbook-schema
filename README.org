@@ -6,7 +6,7 @@ needed for (Swiss) German Braille production.
 ** How to build
 
 #+BEGIN_EXAMPLE
-  mvn package
+mvn package
 #+END_EXAMPLE
 
 ** Authors

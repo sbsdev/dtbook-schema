@@ -2,7 +2,7 @@
 ;;; See Info node `(emacs) Directory Variables' for more information.
 
 ((nil
-  (compile-command . "mvn clean package"))
+  (compile-command . "mvn --batch-mode clean package"))
  ("pom.xml"
   . ((nil . ((indent-tabs-mode . t)
              (tab-width . 8)
