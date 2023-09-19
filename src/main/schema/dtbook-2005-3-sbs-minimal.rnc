@@ -5,7 +5,7 @@ start = dtbook
 
 dtbook = element dtbook {
    attribute version { "2005-3-sbs-minimal" },
-   attribute xml:lang { "de" | "de-1901" | "de-CH" | "de-CH-1901" },
+   attribute xml:lang { "de" | "de-1901" | "de-CH" | "de-CH-1901" | "it" | "rm-sursilv" },
    head,
    book
 }

@@ -36,6 +36,7 @@ include "dtbook-2005-3.rnc" {
     | "fr"
     | "it"
     | "es"
+    | "rm-sursilv"
     | "und"
   
   # Limit possible values of @name on dtb:meta
