@@ -9,6 +9,12 @@ needed for (Swiss) German Braille production.
 mvn package
 #+END_EXAMPLE
 
+#+begin_src shell
+  mvn release:clean release:prepare -DdryRun=true
+  mvn release:prepare
+  mvn release:perform -Darguments="-Dmaven.deploy.skip=true"
+#+end_src
+
 ** Authors
 
 - Bert Frees
