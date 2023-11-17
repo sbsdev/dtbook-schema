@@ -72,6 +72,8 @@ brl.emph =
     brl.continuationAttribute?,
     (text
      & dtb.pagenum?
+     & dtb.em*
+     & dtb.strong*
      & brl.contractionhint*
      & dtb.abbr*
      & dtb.span*
