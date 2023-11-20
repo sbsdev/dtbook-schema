@@ -74,6 +74,7 @@ brl.emph =
      & dtb.pagenum?
      & dtb.em*
      & dtb.strong*
+     & dtb.br*
      & brl.contractionhint*
      & dtb.abbr*
      & dtb.span*
