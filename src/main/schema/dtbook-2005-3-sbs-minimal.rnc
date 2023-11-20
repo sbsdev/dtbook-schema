@@ -425,6 +425,8 @@ emph = element brl:emph {
    continuationAttribute?,
     (text
     & pagenum?
+    & em*
+    & strong*
     & contractionhints*
     & abbr*
     & span*
