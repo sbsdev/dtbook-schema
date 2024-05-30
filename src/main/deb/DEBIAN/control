@@ -1,5 +1,5 @@
-Package: ${project.artifactId}
-Version: ${project.detailedVersion}
+Package: [[name]]
+Version: [[version]]
 Section: text
 Priority: optional
 Architecture: all
