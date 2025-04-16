@@ -105,16 +105,6 @@
                                     <arg value="tools/iso_schematron_sbs.xsl" />
                                     <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-minimal.sch.xsl" />
                                 </java>
-                                <java classname="net.sf.saxon.Transform">
-                                    <arg value="${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-continuation.rng" />
-                                    <arg value="tools/RNG2Schtrn.xsl" />
-                                    <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-continuation.sch" />
-                                </java>
-                                <java classname="net.sf.saxon.Transform">
-                                    <arg value="${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-continuation.rng" />
-                                    <arg value="tools/iso_schematron_sbs.xsl" />
-                                    <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-continuation.xsl" />
-                                </java>
                             </target>
                         </configuration>
                     </execution>
