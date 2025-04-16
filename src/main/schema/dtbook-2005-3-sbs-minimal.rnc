@@ -1,5 +1,12 @@
 default namespace = "http://www.daisy.org/z3986/2005/dtbook/"
 namespace brl = "http://www.daisy.org/z3986/2009/braille/"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+
+# Schematron title and namespaces
+sch:title [ "DTBook 2005-3 Schematron tests for SBS" ]
+sch:ns [
+  prefix = "dtb"
+  uri = "http://www.daisy.org/z3986/2005/dtbook/" ]
 
 start = dtbook
 
@@ -473,3 +480,15 @@ select = element brl:select {
    element brl:when-braille { text & literal* },
    element brl:otherwise { text }
 }
+
+# Don't allow the implicit class on elements within the bodymatter
+sch:pattern [
+  name = "sbs_class_implicit"
+  id = "sbs_class_implicit"
+  sch:rule [
+    context = "dtb:h1[@class='implicit']"
+    sch:assert [
+      test =
+        "not(ancestor::dtb:bodymatter)"
+        "The class='implicit' is not allowed on h1 elements within bodymatter." ]]]
+
