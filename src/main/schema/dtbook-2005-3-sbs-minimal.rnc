@@ -45,6 +45,8 @@ accentsAttribute =
 ## a form of css for Braille)
 brailleClassAttribute = attribute brl:class { string }
 
+implicitTitleAttribute = attribute class { "implicit" }
+
 levelcontent = 
    pagenum
  | p 
@@ -84,7 +86,8 @@ frontmatterLevel1 = element level1 {
     & h1?) 
 }
 
-h1 = element h1 { 
+h1 = element h1 {
+   implicitTitleAttribute?,
    brailleClassAttribute?,
    hcontent 
 }
