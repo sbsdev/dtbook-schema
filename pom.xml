@@ -101,7 +101,7 @@
                                     <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-minimal.sch" />
                                 </java>
                                 <java classname="net.sf.saxon.Transform">
-                                    <arg value="${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-minimal.rng" />
+                                    <arg value="${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-minimal.sch" />
                                     <arg value="tools/iso_schematron_sbs.xsl" />
                                     <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-minimal.sch.xsl" />
                                 </java>
