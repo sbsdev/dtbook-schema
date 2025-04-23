@@ -189,6 +189,25 @@ sch:pattern [
         "not(descendant::*[@xml:lang or @brl:grade])"
         "An element with xml:lang or brl:grade can not have descendants with xml:lang or brl:grade." ]]]
 
+# ==================
+# class = "implicit"
+# ==================
+
+# Don't allow the implicit class on elements within the bodymatter
+# NOTE: This rule really only makes sense for the minimal schema, as
+# this is where we allow this class value. However, in order to keep
+# things simple we strive to only have one schematron file and hence
+# we add this rule to the full schema.
+sch:pattern [
+  name = "sbs_class_implicit"
+  id = "sbs_class_implicit"
+  sch:rule [
+    context = "dtb:h1[@class='implicit']"
+    sch:assert [
+      test =
+        "not(ancestor::dtb:bodymatter)"
+        "The class='implicit' is not allowed on h1 elements within bodymatter." ]]]
+
 # ============
 # Continuation
 # ============
