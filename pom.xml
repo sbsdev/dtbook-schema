@@ -55,6 +55,7 @@
             <plugin>
                 <groupId>us.bryon</groupId>
                 <artifactId>relaxng-maven-plugin</artifactId>
+		<version>1.1</version>
                 <executions>
                     <execution>
                         <id>generate-relaxng</id>
@@ -84,7 +85,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <java classname="net.sf.saxon.Transform">
                                     <arg value="${project.build.outputDirectory}/rng/dtbook-2005-3-sbs-full.rng" />
                                     <arg value="tools/RNG2Schtrn.xsl" />
@@ -95,7 +96,7 @@
                                     <arg value="tools/iso_schematron_sbs.xsl" />
                                     <arg value="-o:${project.build.outputDirectory}/sch/dtbook-2005-3-sbs-full.sch.xsl" />
                                 </java>
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
