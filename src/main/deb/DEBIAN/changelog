@@ -1,3 +1,9 @@
+dtbook-schema (1.6-1) unstable; urgency=medium
+
+  * Add class = "implicit"
+
+ -- Christian Egli <christian.egli@sbs.ch>  Thu, 2 May 2025 14:39:05 +0200
+
 dtbook-schema (1.4-1) unstable; urgency=medium
 
   * Minor upgrade
