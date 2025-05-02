@@ -136,6 +136,7 @@
 			    <goal>jdeb</goal>
 			</goals>
 			<configuration>
+			    <skipPOMs>false</skipPOMs>
 			    <controlDir>src/main/deb/DEBIAN</controlDir>
 			    <classifier>all</classifier>
 			    <deb>target/${project.artifactId}_${project.version}_all.deb</deb>
