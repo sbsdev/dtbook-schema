@@ -15,6 +15,12 @@ mvn package
   mvn release:perform -Darguments="-Dmaven.deploy.skip=true"
 #+end_src
 
+*** Security Manager is deprecated
+
+Unfortunately, you have to use Java 17 to build the dtbook schema ATM.
+With more recent Java versions the build fails with "The Security
+Manager is deprecated and will be removed in a future release".
+
 ** Authors
 
 - Bert Frees
